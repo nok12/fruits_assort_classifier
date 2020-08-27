@@ -8,7 +8,8 @@ import numpy as np
 UPLOAD_FOLDER = "./static/images/"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 
-labels = [ "いちご","オレンジ","バナナ" ]
+labels = [ "いちご","オレンジ","バナナ" ,"さくらんぼ","パイナップル" ,
+          "ブドウ" ,"もも","りんご" ,"レモン","柿" ]
 n_class = len(labels)
 img_size = 32
 n_result = 3  # 上位3つの結果を表示
@@ -51,7 +52,7 @@ def result():
         x = x.reshape(1, img_size, img_size, 3) / 255        
 
         # 予測
-        model = load_model("./fruits_associate.h5")
+        model = load_model("./fruits10_associate.h5")
         
         y = model.predict(x)[0]
         sorted_idx = np.argsort(y)[::-1]  # 降順でソート
